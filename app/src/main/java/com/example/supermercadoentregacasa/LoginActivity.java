@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 usuario = auth.getCurrentUser();
                 if( usuario != null ){
-                    Intent intent = new Intent(LoginActivity.this, ListaProdutrosActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, ProdutosActivity.class);
                     startActivity( intent );
                 }else{
                     Toast.makeText(LoginActivity.this ,
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // entrar();
-                Intent intent = new Intent(LoginActivity.this, ListaProdutrosActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ProdutosActivity.class);
                 startActivity( intent );
             }
         });
