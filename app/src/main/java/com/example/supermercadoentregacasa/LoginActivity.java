@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // entrar();
+                entrar();
                 Intent intent = new Intent(LoginActivity.this, ProdutosActivity.class);
                 startActivity( intent );
             }

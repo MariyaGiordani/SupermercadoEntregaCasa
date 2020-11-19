@@ -75,6 +75,7 @@ public class ProdutosActivity extends AppCompatActivity {
                 p.id = snapshot.getKey();
                 p.nome = snapshot.child("nome").getValue( String.class );
                 p.quantidade = snapshot.child("quantidade").getValue( Double.class );
+                p.preco = snapshot.child("preco").getValue(Double.class);
 
                 listaDeProdutos.add( p );
                 adapter.notifyDataSetChanged();

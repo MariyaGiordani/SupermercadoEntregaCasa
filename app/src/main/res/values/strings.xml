@@ -14,6 +14,7 @@
     <string name="txtQuantidade">Quantidade: </string>
     <string name="txtNome">Nome: </string>
     <string name="txtNomeProduto">Nome do produto: </string>
+    <string name="txtPreco">Preço: </string>
     <string name="txtSalvar">SALVAR</string>
     <string name="title_activity_main">MainActivity</string>
 
