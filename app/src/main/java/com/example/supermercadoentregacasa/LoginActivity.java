@@ -42,7 +42,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 usuario = auth.getCurrentUser();
                 if( usuario != null ){
-                    Intent intent = new Intent(LoginActivity.this, ProdutosActivity.class);
+                    Intent intent;
+                    if( usuario.getEmail() == "admin@admin.com") {
+                        intent = new Intent(LoginActivity.this, ProdutosActivity.class);
+                    }else{
+                        intent = new Intent(LoginActivity.this, Produto.class);
+                    }
                     startActivity( intent );
                 }else{
                     Toast.makeText(LoginActivity.this ,

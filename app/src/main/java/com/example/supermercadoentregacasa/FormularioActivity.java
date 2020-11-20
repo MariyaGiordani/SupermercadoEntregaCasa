@@ -11,7 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class FormularioActivity extends AppCompatActivity {
-    private EditText etNome, etQuantidade;
+    private EditText etNome, etQuantidade, etPreco;
     private Button btnSalvar;
 
     @Override
@@ -21,6 +21,7 @@ public class FormularioActivity extends AppCompatActivity {
 
         etNome = findViewById(R.id.etNome);
         etQuantidade = findViewById(R.id.etQuantidade);
+        etPreco = findViewById(R.id.etPreco);
         btnSalvar = findViewById(R.id.btnSalvar);
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +35,7 @@ public class FormularioActivity extends AppCompatActivity {
     private void salvar(){
         String nome = etNome.getText().toString();
         String quantidade = etQuantidade.getText().toString();
+        String preco = etPreco.getText().toString();
 
         if( !nome.isEmpty() ){
             Produto prod = new Produto();
@@ -44,6 +46,14 @@ public class FormularioActivity extends AppCompatActivity {
                 quantidade = quantidade.replace("," , ".");
                 prod.quantidade = Double.valueOf( quantidade );
             }
+
+            if( preco.isEmpty() ){
+                prod.preco = 0.0;
+            }else {
+                preco = preco.replace("," , ".");
+                prod.preco = Double.valueOf( preco );
+            }
+
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference reference = database.getReference();
             reference.child("produtos").push().setValue( prod );
