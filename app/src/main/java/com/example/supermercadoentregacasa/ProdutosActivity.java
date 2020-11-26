@@ -54,8 +54,6 @@ public class ProdutosActivity extends AppCompatActivity {
         lvProdutos = findViewById(R.id.lvProdutos);
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listaDeProdutos );
         lvProdutos.setAdapter( adapter );
-
-
     }
 
     @Override
@@ -72,10 +70,10 @@ public class ProdutosActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Produto p = new Produto();
-                p.id = snapshot.getKey();
-                p.nome = snapshot.child("nome").getValue( String.class );
-                p.quantidade = snapshot.child("quantidade").getValue( Double.class );
-                p.preco = snapshot.child("preco").getValue(Double.class);
+                p.setKey(snapshot.getKey());
+                p.setNome(snapshot.child("nome").getValue( String.class ));
+                p.setQuantidade(snapshot.child("quantidade").getValue( Double.class ));
+                p.setPreco(snapshot.child("preco").getValue( Double.class ));
 
                 listaDeProdutos.add( p );
                 adapter.notifyDataSetChanged();

@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                     if( usuario.getEmail() == "admin@admin.com") {
                         intent = new Intent(LoginActivity.this, ProdutosActivity.class);
                     }else{
-                        intent = new Intent(LoginActivity.this, Produto.class);
+                        intent = new Intent(LoginActivity.this, ListaProdutosActivity.class);
                     }
                     startActivity( intent );
                 }else{
@@ -60,7 +60,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 entrar();
-                Intent intent = new Intent(LoginActivity.this, ProdutosActivity.class);
+                Intent intent;
+                intent = new Intent(LoginActivity.this, ListaProdutosActivity.class);
                 startActivity( intent );
             }
         });

@@ -39,19 +39,19 @@ public class FormularioActivity extends AppCompatActivity {
 
         if( !nome.isEmpty() ){
             Produto prod = new Produto();
-            prod.nome = nome;
+            prod.setNome(nome);
             if( quantidade.isEmpty() ){
-                prod.quantidade = 0.0;
+                prod.setQuantidade(0.00);
             }else {
                 quantidade = quantidade.replace("," , ".");
-                prod.quantidade = Double.valueOf( quantidade );
+                prod.setQuantidade(Double.valueOf( quantidade ));
             }
 
             if( preco.isEmpty() ){
-                prod.preco = 0.0;
+                prod.setPreco(0.00);
             }else {
                 preco = preco.replace("," , ".");
-                prod.preco = Double.valueOf( preco );
+                prod.setPreco(Double.valueOf( preco ));
             }
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
