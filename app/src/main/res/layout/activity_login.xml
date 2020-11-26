@@ -6,13 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <LinearLayout
+        android:layout_width="410dp"
+        android:layout_height="38dp"
+        android:background="#CD5A5A"
+        android:backgroundTint="#CD5A5A"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-8dp"></LinearLayout>
 
     <EditText
         android:id="@+id/etEmail"
-        android:layout_width="322dp"
-        android:layout_height="46dp"
+        android:layout_width="324dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="356dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="E-mail:"
@@ -24,44 +32,52 @@
 
     <EditText
         android:id="@+id/etSenha"
-        android:layout_width="329dp"
-        android:layout_height="60dp"
+        android:layout_width="324dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Senha:"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
+    <LinearLayout
+        android:layout_width="410dp"
+        android:layout_height="50dp"
+        android:background="#CD5A5A"
+        android:backgroundTint="#CD5A5A"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="679dp"></LinearLayout>
+
     <Button
         android:id="@+id/btnEntrar"
-        android:layout_width="172dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="8dp"
-        android:text="ENTRAR"
+        android:layout_width="124dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#E36868"
+        android:drawableTint="#FFFFFF"
+        android:foregroundTint="#FFFFFF"
+        android:shadowColor="#FFFFFF"
+        android:text="Button"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSenha" />
 
-    <Button
-        android:id="@+id/btnCadastro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="8dp"
-        android:text="Cadastre-se"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEntrar" />
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="297dp"
+        android:layout_height="309dp"
+        app:srcCompat="@drawable/market_delivery_logo"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="30dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
