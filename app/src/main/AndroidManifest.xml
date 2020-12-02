@@ -12,13 +12,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".FormularioActivity"></activity>
         <activity
-            android:name=".ListaProdutosActivity"
-            android:label="@string/app_name"
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ProdutosActivity"
             android:label="@string/title_activity_produtos"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CarrinhoActivity"
+            android:label="Carrinho de Compra"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".LoginActivity">
             <intent-filter>

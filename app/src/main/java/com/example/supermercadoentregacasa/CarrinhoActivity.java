@@ -1,21 +1,16 @@
 package com.example.supermercadoentregacasa;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +22,7 @@ import com.google.firebase.database.Query;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaProdutosActivity extends AppCompatActivity {
+public class CarrinhoActivity extends AppCompatActivity {
     private ListView lvProdutos;
     private List<Produto> listaDeProdutos;
     private AdapterProduto adapterProduto;
@@ -35,18 +30,21 @@ public class ListaProdutosActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private ChildEventListener childEventListener;
     private Query query;
+    private Menu mMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("Entrar", String.valueOf((ArrayList<Produto>) getIntent().getSerializableExtra("listaCarrinho")));
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista);
+        setContentView(R.layout.activity_carrinho);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         lvProdutos = findViewById(R.id.lvProdutos);
 
         listaDeProdutos = new ArrayList<>();
-        adapterProduto = new AdapterProduto(ListaProdutosActivity.this,
+        listaDeProdutos = (ArrayList<Produto>) getIntent().getSerializableExtra("listaCarrinho");
+        adapterProduto = new AdapterProduto(CarrinhoActivity.this,
                 listaDeProdutos);
         lvProdutos.setAdapter(adapterProduto);
     }
@@ -65,6 +63,10 @@ public class ListaProdutosActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        if(item.getItemId() == R.id.action_drawer_carrinho) {
+            return true;
+        }
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {

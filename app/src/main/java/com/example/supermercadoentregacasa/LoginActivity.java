@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,10 +44,10 @@ public class LoginActivity extends AppCompatActivity {
                 usuario = auth.getCurrentUser();
                 if( usuario != null ){
                     Intent intent;
-                    if( usuario.getEmail() == "admin@admin.com") {
+                    if( usuario.getEmail().equals("admin@admin.com")) {
                         intent = new Intent(LoginActivity.this, ProdutosActivity.class);
                     }else{
-                        intent = new Intent(LoginActivity.this, ListaProdutosActivity.class);
+                        intent = new Intent(LoginActivity.this, MainActivity.class);
                     }
                     startActivity( intent );
                 }else{
@@ -60,9 +61,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 entrar();
-                Intent intent;
-                intent = new Intent(LoginActivity.this, ListaProdutosActivity.class);
-                startActivity( intent );
             }
         });
 
@@ -76,11 +74,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void entrar(){
-
         String email = etEmail.getText().toString();
         String senha = etSenha.getText().toString();
         if( !email.isEmpty() && !senha.isEmpty() ){
-
             auth.signInWithEmailAndPassword(email , senha)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -88,6 +84,17 @@ public class LoginActivity extends AppCompatActivity {
                             if( ! task.isSuccessful() ){
                                 Toast.makeText( LoginActivity.this ,
                                         "Erro ao logar", Toast.LENGTH_LONG).show();
+                            }else {
+                                usuario = auth.getCurrentUser();
+                                if(usuario != null){
+                                    Intent intent;
+                                    if( usuario.getEmail().equals("admin@admin.com")) {
+                                        intent = new Intent(LoginActivity.this, ProdutosActivity.class);
+                                    }else{
+                                        intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    }
+                                    startActivity( intent );
+                                }
                             }
                         }
                     });
