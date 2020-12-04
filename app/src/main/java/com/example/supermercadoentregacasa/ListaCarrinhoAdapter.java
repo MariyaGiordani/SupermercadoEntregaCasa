@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ public class ListaCarrinhoAdapter extends BaseAdapter {
     private List<Produto> listaProdutos;
     private Context context;
     private LayoutInflater inflater;
+    private int count = 1;
 
     public ListaCarrinhoAdapter(Context context, List<Produto> listaProdutos){
         this.context = context;
@@ -48,6 +50,9 @@ public class ListaCarrinhoAdapter extends BaseAdapter {
         if ( view == null){
             view = inflater.inflate(R.layout.lista_item, null);
             item = new ListaCarrinhoAdapter.ItemSuporte();
+            item.cartPlusImg = (ImageView) view.findViewById(R.id.cart_plus_img);
+            item.cartMinusImg = (ImageView) view.findViewById(R.id.cart_minus_img);
+            item.produtoQuantidade = (TextView) view.findViewById(R.id.produtoQuantidade);
             item.itemNome = (TextView) view.findViewById(R.id.itemNome);
             item.itemPreco = (TextView) view.findViewById(R.id.itemPreco);
             item.layout = (LinearLayout) view.findViewById(R.id.layout);
@@ -58,12 +63,22 @@ public class ListaCarrinhoAdapter extends BaseAdapter {
         Produto produto = listaProdutos.get( i );
         item.itemNome.setText( produto.getNome());
         item.itemPreco.setText( String.valueOf( produto.getPreco()));
+        item.produtoQuantidade.setText(String.valueOf(count));
+
+        item.cartPlusImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               count ++;
+               Log.i("Entrar40", String.valueOf(count));
+            }
+        });
         return view;
     }
 
 
     private class ItemSuporte{
-        TextView itemNome, itemPreco;
+        TextView itemNome, itemPreco, produtoQuantidade;
+        ImageView cartPlusImg, cartMinusImg;
         LinearLayout layout;
     }
 }
