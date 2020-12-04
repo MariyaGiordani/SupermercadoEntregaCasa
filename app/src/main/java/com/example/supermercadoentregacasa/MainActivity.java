@@ -2,25 +2,17 @@ package com.example.supermercadoentregacasa;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.MenuItemCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -43,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private ChildEventListener childEventListener;
     private Query query;
-    private Menu mMenu;
+    private int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +45,17 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         lvProdutos = findViewById(R.id.lvProdutos);
+        carrinho = findViewById(R.id.action_drawer_carrinho);
         listaCarrinho = new ArrayList<>();
         listaDeProdutos = new ArrayList<>();
         adapterProduto = new AdapterProduto(MainActivity.this,
                 listaDeProdutos);
         lvProdutos.setAdapter(adapterProduto);
-
         lvProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 listaCarrinho.add((Produto) parent.getItemAtPosition(position));
-                Log.i("Entrar1", String.valueOf(listaCarrinho.get(0).getPreco()));
+                count ++;
             }
         });
     }
@@ -83,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if(item.getItemId() == R.id.action_drawer_carrinho) {
+        if(id == R.id.action_drawer_carrinho) {
+            Log.i("Entrar1", String.valueOf(listaCarrinho));
             Intent intent;
             intent = new Intent(MainActivity.this, CarrinhoActivity.class);
             intent.putExtra("listaCarrinho", (ArrayList<Produto>) listaCarrinho);

@@ -1,12 +1,25 @@
 package com.example.supermercadoentregacasa;
+import java.io.Serializable;
 
-public class Produto {
-
+public class Produto implements Serializable {
     private int id;
     private String nome;
     private double quantidade;
     private double preco;
     private String key;
+
+    public Produto(int id, String nome, double quantidade, double preco, String key) {
+        this.id = id;
+        this.nome = nome;
+        this.quantidade = quantidade;
+        this.preco = preco;
+        this.key = key;
+    }
+
+    public Produto() {
+
+    }
+
 
     public String getKey() {
         return key;

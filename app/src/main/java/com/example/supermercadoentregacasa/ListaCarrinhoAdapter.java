@@ -2,6 +2,7 @@ package com.example.supermercadoentregacasa;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class ListaCarrinhoAdapter extends BaseAdapter {
         this.context = context;
         this.listaProdutos = listaProdutos;
         this.inflater = LayoutInflater.from( context );
+        Log.i("Entrar5", String.valueOf(listaProdutos));
     }
 
     @Override
@@ -40,7 +42,7 @@ public class ListaCarrinhoAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-
+        Log.i("Entrar4", String.valueOf(listaProdutos));
         ListaCarrinhoAdapter.ItemSuporte item;
 
         if ( view == null){
@@ -53,11 +55,9 @@ public class ListaCarrinhoAdapter extends BaseAdapter {
         }else {
             item = (ListaCarrinhoAdapter.ItemSuporte) view.getTag();
         }
-
         Produto produto = listaProdutos.get( i );
-        item.itemNome.setText( produto.getNome()  );
-        item.itemPreco.setText( String.valueOf( produto.getPreco() ) );
-
+        item.itemNome.setText( produto.getNome());
+        item.itemPreco.setText( String.valueOf( produto.getPreco()));
         return view;
     }
 
