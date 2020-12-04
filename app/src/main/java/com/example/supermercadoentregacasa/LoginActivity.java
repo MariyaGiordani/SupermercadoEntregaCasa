@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                 usuario = auth.getCurrentUser();
                 if( usuario != null ){
                     Intent intent;
-                    if( usuario.getEmail().equals("admin@admin.com")) {
+                    if( usuario.getEmail().equals("admin@fadergs.com")) {
                         intent = new Intent(LoginActivity.this, ProdutosActivity.class);
                     }else{
                         intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                                 usuario = auth.getCurrentUser();
                                 if(usuario != null){
                                     Intent intent;
-                                    if( usuario.getEmail().equals("admin@admin.com")) {
+                                    if( usuario.getEmail().equals("admin@fadergs.com")) {
                                         intent = new Intent(LoginActivity.this, ProdutosActivity.class);
                                     }else{
                                         intent = new Intent(LoginActivity.this, MainActivity.class);

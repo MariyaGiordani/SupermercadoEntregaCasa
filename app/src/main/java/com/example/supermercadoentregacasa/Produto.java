@@ -67,7 +67,7 @@ public class Produto implements Serializable {
         if ( quantidade == 0 )
             return this.nome;
         else
-            return nome +" Quantidade: " + quantidade;
+            return nome +"( Quantidade: " + quantidade +" ) - Preço: " + preco;
     }
 }
 
